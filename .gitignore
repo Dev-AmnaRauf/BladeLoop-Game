@@ -33,6 +33,7 @@ local.properties
 .cxx/
 *.keystore
 !debug.keystore
+*.jks
 .kotlin/
 
 # node.js
@@ -73,3 +74,13 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Firebase config with API keys -- fetch from the Firebase console, never commit
+android/app/google-services.json
+ios/**/GoogleService-Info.plist
+# Firebase CLI deploy cache
+.firebase/
+# Release builds copied out of the build folder
+android/app/release/
+# Stray empty file from a mistyped shell redirect
+/=

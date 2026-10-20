@@ -1,6 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- The run buzzes on a death, a checkpoint and a pickup. A normal
+         permission: granted at install, with no runtime prompt. Without it
+         Vibration.vibrate() throws from the system service, which no JS
+         try/catch can intercept. -->
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
       android:name=".MainApplication"
@@ -11,9 +16,58 @@
       android:theme="@style/AppTheme"
       android:usesCleartextTraffic="${usesCleartextTraffic}"
       android:supportsRtl="true">
+      <!-- Play Games Services. The SDK is started for us at launch by a
+           ContentProvider inside `react-native-google-play-games`, and this is
+           the one thing it reads that only the app can supply. Without it the
+           sign-in door never opens; see `res/values/strings.xml`. -->
+      <meta-data
+        android:name="com.google.android.gms.games.APP_ID"
+        android:value="@string/play_games_app_id" />
+      <!-- Hands the share card to whichever app the player picks. Only the
+           cache folder in res/xml/share_paths.xml is reachable through it. -->
+      <provider
+        android:name="androidx.core.content.FileProvider"
+        android:authorities="${applicationId}.sharecard"
+        android:exported="false"
+        android:grantUriPermissions="true">
+        <meta-data
+          android:name="android.support.FILE_PROVIDER_PATHS"
+          android:resource="@xml/share_paths" />
+      </provider>
+      <!-- The whole game is played and read sideways.
+
+           Every screen (the door, the front page, the road, the board,
+           settings and the run itself) is laid out for a short, wide
+           viewport, so there is one answer here for the life of the activity
+           and no turn to ask for part way through. That is the change this
+           attribute records: the app used to open upright and turn only for a
+           run, which meant every page was drawn twice over and the player
+           watched the phone swing round on the way into and out of a level.
+
+           `sensorLandscape` rather than `landscape` so the phone may be held
+           either way round: the player picks which side the notch and the
+           charging cable end up on, and the flip between the two is a resize
+           like any other.
+
+           `configChanges` below is what makes that flip cheap:
+           `orientation|screenLayout|screenSize|smallestScreenSize` mean the
+           activity is resized rather than recreated, so a run turned end for
+           end keeps its world, its score and its checkpoint, and React Native
+           simply re-lays the tree out at the new size.
+
+           `Info.plist` says the same thing on iOS: the two landscape keys and
+           nothing else. The JS side asks once at launch too, through
+           `NativeOrientation` (see `src/services/Orientation.ts`), which is
+           belt and braces here and the only lock on a platform whose native
+           half is not built yet.
+
+           Note for anyone editing this comment: a double hyphen is illegal
+           inside an XML comment and the manifest merger fails the build on it
+           with nothing but "Error parsing AndroidManifest.xml". -->
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
+        android:screenOrientation="sensorLandscape"
         android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
         android:launchMode="singleTask"
         android:windowSoftInputMode="adjustResize"

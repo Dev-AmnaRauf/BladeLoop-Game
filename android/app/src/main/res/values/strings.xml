@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">BladeLoop</string>
+
+    <!--
+      The Play Games Services app id, read at launch by the SDK that
+      `react-native-google-play-games` starts from a ContentProvider. It has to
+      be a string resource rather than a literal in the manifest: the value is
+      all digits, and an inline one is merged in as an integer, which the SDK
+      then fails to read.
+
+      This is the Google Cloud project number of the project the game is linked
+      to, which is the number the Firebase project `bladeloop-4d203` already
+      has, since that is where the sign-in clients live. It is a public
+      identifier, like the API key beside it.
+
+      TODO: confirm it against Play Console, under the game, Grow Users, Play
+      Games Services, Setup and management, Configuration, before release.
+      Until Play Games Services is actually set up there, sign-in fails on the
+      device and the login screen simply does not offer the door.
+    -->
+    <string name="play_games_app_id">541403839742</string>
 </resources>

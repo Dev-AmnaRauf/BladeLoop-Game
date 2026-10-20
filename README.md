@@ -95,3 +95,38 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+# BladeLoop services
+
+The leaderboard, analytics, the settings screen and the login screen
+are set up in
+[`docs/INTEGRATIONS.md`](docs/INTEGRATIONS.md), along with the checklist of
+what has to be filled in before the app is listed.
+
+The leaderboard works today over the Firestore REST API once Anonymous sign-in
+is enabled and [`firestore.rules`](firestore.rules) is deployed. Analytics
+records and stubs itself until its native SDK is installed, so the game runs
+either way. The login screen is the same shape: the guest button
+works in every build, and the Google button needs an Android rebuild after the
+install plus the app's SHA-1 registered with Firebase.
+
+# Project documents
+
+[`PROJECT.md`](PROJECT.md) is the canonical reference for planning and
+delivery, and points at the four standard documents:
+
+| Document | What it holds |
+| --- | --- |
+| [`docs/PR.md`](docs/PR.md) | Purpose, users, goals, scope, assumptions, constraints, success criteria |
+| [`docs/ER.md`](docs/ER.md) | Firestore, on-device and in-memory data model, with Mermaid diagrams |
+| [`docs/FUNCTIONAL-REQUIREMENTS.md`](docs/FUNCTIONAL-REQUIREMENTS.md) | Features, flows, validation, error/empty/loading states, acceptance criteria |
+| [`docs/CHECKLIST.md`](docs/CHECKLIST.md) | Planning → design → implementation → testing → release → post-release |
+
+And, for the simulation itself:
+
+| Document | What it holds |
+| --- | --- |
+| [`docs/GAME-ALGORITHM.md`](docs/GAME-ALGORITHM.md) | The frame loop, the physics as equations, the controls, the level builder, collision, death and respawn, scoring, and what a turn of the phone does |
+
+When a decision, requirement, tool or scope changes, update `PROJECT.md` and
+add a dated entry to its change log.

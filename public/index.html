@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BladeLoop</title>
+<meta name="description" content="BladeLoop — an arcade game. A ball falls down a corridor of blades; a tap throws it back up." />
+<style>
+  :root { --bg: #0c0a1c; --ink: #f3eeff; --muted: #aca3c9; --accent: #38e0ff; --rule: #322e58; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+    background: radial-gradient(120% 90% at 50% 0%, #221c4c 0%, #0c0a1c 62%);
+    color: var(--ink);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    text-align: center;
+  }
+  main { max-width: 520px; }
+  h1 { font-size: 44px; margin: 0 0 8px; letter-spacing: -0.03em; }
+  p { color: var(--muted); margin: 0 0 28px; }
+  nav { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 10px 20px;
+  }
+  a:hover { border-color: var(--accent); }
+  @media (max-width: 520px) { h1 { font-size: 34px; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>BladeLoop</h1>
+  <p>A ball falls down a corridor of blades. A tap throws it back up.</p>
+  <nav>
+    <a href="/privacy">Privacy Policy</a>
+  </nav>
+</main>
+</body>
+</html>

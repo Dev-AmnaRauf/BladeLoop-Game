@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy Policy — BladeLoop</title>
+<meta name="description" content="How the BladeLoop game handles your data." />
+<style>
+  :root {
+    --bg: #0c0a1c;
+    --card: #1a1630;
+    --ink: #f3eeff;
+    --muted: #aca3c9;
+    --rule: #322e58;
+    --accent: #38e0ff;
+    --gold: #ffc93c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 48px 16px 96px;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 760px; margin: 0 auto; }
+  header { border-bottom: 1px solid var(--rule); padding-bottom: 24px; margin-bottom: 32px; }
+  h1 { font-size: 34px; line-height: 1.2; margin: 0 0 12px; letter-spacing: -0.02em; }
+  h2 { font-size: 21px; margin: 40px 0 12px; letter-spacing: -0.01em; }
+  h3 { font-size: 17px; margin: 24px 0 8px; color: var(--gold); }
+  p, li { color: #e2dcf5; }
+  .meta { color: var(--muted); font-size: 14px; margin: 0; }
+  a { color: var(--accent); }
+  ul { padding-left: 22px; }
+  li { margin: 6px 0; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin: 24px 0;
+  }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  code { color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 14px; }
+  @media (max-width: 520px) {
+    body { padding: 32px 16px 72px; }
+    h1 { font-size: 27px; }
+    table, th, td { font-size: 14px; padding: 8px 8px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>BladeLoop Privacy Policy</h1>
+    <p class="meta">Last updated 2 October 2026 &middot; Applies to the BladeLoop mobile game (<code>com.bladeloop.game</code>) on Android and iOS.</p>
+  </header>
+
+  <p>BladeLoop is an arcade game. It is built to be played without an account and without
+  asking for anything you would not expect a game to need &mdash; no contacts, no photos,
+  no microphone, no GPS. This page explains the data the game does handle, who it is shared
+  with, and what you can do about it.</p>
+
+  <h2>1. Who is responsible</h2>
+  <p>BladeLoop is developed and published by <strong>Hello World Technologies</strong>, which is the
+  controller of the data described here. Our contact address appears in section&nbsp;9 and on the
+  app's store listing.</p>
+
+  <h2>2. What the game collects</h2>
+
+  <h3>A game account</h3>
+  <p>The first time you play, the game opens an anonymous account with Firebase Authentication
+  and stores a random account identifier. That identifier is what lets your score reach the
+  leaderboard. It is not tied to your name or your email.</p>
+  <p>You may instead sign in with Google or with Google Play Games. If you do, the game receives
+  and stores on your device your <strong>display name</strong> and, for Google Sign-In, your
+  <strong>email address</strong>, or, for Play Games, your <strong>gamer tag and player ID</strong>.
+  Signing in is optional; the game is fully playable as a guest.</p>
+
+  <h3>Your leaderboard entry</h3>
+  <p>When you submit a score, one row is written for your account containing: the display name
+  you chose (up to 14 characters), your best score, the number of runs you have played, the time
+  of the submission, and a two-letter country code and city name.</p>
+  <div class="card">
+    <strong>The leaderboard is public.</strong> Every player of the game can read every row,
+    including the name you pick. Choose a name you are happy for other players to see, and do not
+    use your real name or any other detail you want kept private. Your email address is never
+    written to the leaderboard.
+  </div>
+
+  <h3>Approximate location</h3>
+  <p>The country and city boards need to know roughly where a score came from. Rather than ask for
+  the device location permission, the game sends a request to
+  <a href="https://ipapi.co/privacy/" rel="noopener">ipapi.co</a>, which reads the IP address the
+  request arrives from and returns a country and a city. The game never requests GPS or precise
+  location, and the result is accurate only to roughly the level of a city. If the lookup fails,
+  the game falls back to the country your device language is set to, or puts you on the world
+  board with no place at all.</p>
+
+  <h3>Analytics</h3>
+  <p>The game records a fixed, closed set of gameplay events &mdash; app opened, run started, run
+  ended, level cleared, leaderboard opened, settings changed and similar &mdash; so we
+  can see which levels are too hard and which screens people get stuck on. These events carry game
+  state, such as a level number or a score. They do not carry your email address or the content of
+  anything you type.</p>
+
+  <h3>Data kept only on your device</h3>
+  <p>Your progress, stars and coins, sound and vibration preferences, your chosen display name,
+  your privacy choices and the cached country and city are stored in the app's own storage on your
+  device. Deleting the app deletes them.</p>
+
+  <h2>3. What the game never collects</h2>
+  <ul>
+    <li>Precise or GPS location</li>
+    <li>Contacts, photos, files, calendar, microphone or camera</li>
+    <li>Health, financial or biometric data</li>
+    <li>SMS or call history</li>
+  </ul>
+
+  <h2>4. Who the data is shared with</h2>
+  <table>
+    <tr><th>Service</th><th>What it receives</th><th>Its policy</th></tr>
+    <tr>
+      <td>Google Firebase (Authentication, Cloud Firestore)</td>
+      <td>Account identifier, sign-in token, leaderboard row</td>
+      <td><a href="https://firebase.google.com/support/privacy" rel="noopener">firebase.google.com/support/privacy</a></td>
+    </tr>
+    <tr>
+      <td>Google Analytics for Firebase</td>
+      <td>Gameplay events and an app instance identifier</td>
+      <td><a href="https://firebase.google.com/support/privacy" rel="noopener">firebase.google.com/support/privacy</a></td>
+    </tr>
+    <tr>
+      <td>Google Play Games</td>
+      <td>Player ID and gamer tag, if you sign in that way</td>
+      <td><a href="https://policies.google.com/privacy" rel="noopener">policies.google.com/privacy</a></td>
+    </tr>
+    <tr>
+      <td>ipapi.co</td>
+      <td>The IP address of the lookup request</td>
+      <td><a href="https://ipapi.co/privacy/" rel="noopener">ipapi.co/privacy</a></td>
+    </tr>
+    <tr>
+      <td>Other players</td>
+      <td>Your public leaderboard row: name, score, runs, country, city</td>
+      <td>&mdash;</td>
+    </tr>
+  </table>
+  <p>Data is not sold, and it is not shared with anyone else for their own advertising purposes.</p>
+
+  <h2>5. Why we are allowed to handle it</h2>
+  <p>Where the UK GDPR or EU GDPR applies: the account and the leaderboard are processed to perform
+  the service you asked for, which is playing the game and appearing on the board; analytics rests
+  on our legitimate interest in keeping the game working.</p>
+
+  <h2>6. How long it is kept</h2>
+  <p>Your leaderboard row stays on the board until you ask us to remove it. Analytics events are
+  kept in aggregate for up to 14 months. Data held on your device lasts until you clear the app's
+  storage or uninstall it.</p>
+
+  <h2>7. Your choices and your rights</h2>
+  <ul>
+    <li><strong>Play as a guest.</strong> You never have to sign in with Google or Play Games.</li>
+    <li><strong>Pick a name that is not yours.</strong> The name on the board is yours to choose, and you can change it.</li>
+    <li><strong>Stay off the board.</strong> If you do not submit a score, no row is written.</li>
+    <li><strong>Reset your progress.</strong> The game's settings screen clears the progress stored on your device.</li>
+    <li><strong>Delete everything.</strong> Write to the address below and we will delete your account, your leaderboard row and any data held against it. Uninstalling the app removes everything held on the device.</li>
+    <li><strong>Access, correction, objection and portability.</strong> If you are in the UK, the EEA or another region with equivalent law, write to us and we will answer within one month. You may also complain to your local data protection authority.</li>
+  </ul>
+
+  <h2>8. Children</h2>
+  <p>BladeLoop is not directed at children under 13, and we do not knowingly collect personal
+  information from them. If you believe a child has provided information through the game, write to
+  the address below and we will delete it.</p>
+
+  <h2>9. Contact</h2>
+  <p>Questions, deletion requests and anything else about this policy:
+  <a href="mailto:hello@helloworldtech.com">hello@helloworldtech.com</a>.</p>
+
+  <h2>10. Changes</h2>
+  <p>If this policy changes, the new version is published on this page and the date at the top is
+  updated. Material changes will also be noted in the app's store listing release notes.</p>
+
+  <footer>
+    BladeLoop by Hello World Technologies &middot; Privacy Policy &middot; Last updated 2 October 2026
+  </footer>
+</main>
+</body>
+</html>

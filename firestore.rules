@@ -1,0 +1,57 @@
+rules_version = '2';
+
+// Security rules for the BladeLoop leaderboard.
+//
+// The app talks to Firestore over the REST API with an anonymous id token, so
+// these rules are the only thing standing between the board and anyone who
+// unpacks the APK and finds the (public, by design) web API key. They are
+// written to make the one write the game needs cheap and everything else
+// impossible.
+//
+// Deploy with:  firebase deploy --only firestore:rules
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // One row per device, named after that device's anonymous uid.
+    match /scores/{uid} {
+
+      // The board is public: every player reads every row. Note that this
+      // makes the `name` field public too, which is why the settings sheet
+      // says so and why the app never puts anything else identifying in here.
+      allow read: if true;
+
+      // A device may only write its own row, and only in the shape the game
+      // writes. Without `hasOnly` a caller could bolt arbitrary fields onto a
+      // document that everyone downloads.
+      allow create, update: if request.auth != null
+        && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['name', 'score', 'runs', 'at', 'country', 'city'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() <= 14
+        // The place the row was set, which is what the country and city
+        // boards filter on. Both may be empty: a device that could not work
+        // out where it is still belongs on the world board.
+        && request.resource.data.country is string
+        && request.resource.data.country.size() <= 2
+        && request.resource.data.city is string
+        && request.resource.data.city.size() <= 32
+        && request.resource.data.score is int
+        && request.resource.data.score >= 0
+        // Far above anything the level can actually produce, but finite: it
+        // keeps a tampered client from parking itself at the top forever.
+        && request.resource.data.score <= 1000000
+        && request.resource.data.runs is int
+        && request.resource.data.runs >= 0
+        && request.resource.data.at is string
+        && request.resource.data.at.size() <= 32;
+
+      // Nothing in the app deletes a score, so nothing may.
+      allow delete: if false;
+    }
+
+    // Everything else in the project is closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

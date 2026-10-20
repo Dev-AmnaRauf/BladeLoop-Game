@@ -1,4 +1,4 @@
-package com.bladeloop
+package com.bladeloop.game
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

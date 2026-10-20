@@ -1,4 +1,4 @@
-package com.bladeloop
+package com.bladeloop.game
 
 import android.app.Application
 import com.facebook.react.PackageList
@@ -14,8 +14,14 @@ class MainApplication : Application(), ReactApplication {
       context = applicationContext,
       packageList =
         PackageList(this).packages.apply {
-          // Packages that cannot be autolinked yet can be added manually here, for example:
-          // add(MyReactNativePackage())
+          // The app's own module rather than a library, so nothing autolinks
+          // it: it turns the phone sideways for a run and upright again after.
+          add(OrientationPackage())
+          // Also the app's own: the Play Games server auth code that Firebase
+          // takes in exchange for an account. See PlayGamesAuthModule.
+          add(PlayGamesAuthPackage())
+          // And the share card: a score shared as a picture, not just a line.
+          add(ShareCardPackage())
         },
     )
   }
